@@ -239,12 +239,12 @@
 
     加载过程:
 
-        - 加载
-        - 链接
-            - 验证
-            - 准备
-            - 解析
-        - 初始化
+    - 加载
+    - 链接
+        - 验证
+        - 准备
+        - 解析
+    - 初始化
 
     何时开始类的初始化?
         主动引用:
@@ -297,6 +297,7 @@
     LFU: 16 位时钟, 8 位频率(最多 255), redis 并没有使用线性上升的方式, 而是通过
     一个复杂的公式, 通过配置两个参数来调整数据的递增速度
 
+    ```c
     uint8_t LFULogIncr(uint8_t counter) {
         if (counter == 255) return 255;
         double r = (double)rand()/RAND_MAX;
@@ -306,6 +307,7 @@
         if (r < p) counter++;
         return counter;
     }
+    ```
 
     [redis 的缓存淘汰策略 LRU 和 LFU](https://www.jianshu.com/p/c8aeb3eee6bc)
 
