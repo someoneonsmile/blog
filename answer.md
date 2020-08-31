@@ -197,3 +197,115 @@
 
     行为型:  
     职责链模式, 命令模式, 解释器模式, 迭代器模式, 中介者模式, 备忘录模式, 观察者模式, 状态模式, 策略模式, 模板方法模式, 访问者模式
+
+    举例:  
+    - 简单工厂: guava Maps.newHashMap  
+    - DelayQueue 内部组合 PriorityQueue
+
+16. AQS 相关
+
+    锁有哪些:  
+    ReentrantLock: 可重入锁, ReentrantWriteWriteLock: 可重入读写
+    锁, StampedLock: 乐观读锁, 解决读多写少, 写饥饿问题
+
+    锁分类:  
+    公平/非公平, 独占/共享, 乐观/悲观(乐观读锁不与写锁互斥)
+
+17. spring boot 原理
+
+    自动配置
+
+    @SpringBootApplication 是个复合注解, 其包括:
+    - @SpringBootConfiguration (同 @Configuration)
+    - @EnableAutoConfiguration
+    - @ComponentScan
+
+    @EnableAutoConfiguration 由这两个注解组成:
+        - @AutoConfigurationPackage
+        - @Import(AutoConfigurationImportSelector.class)
+
+    @AutoConfigurationPackage
+    是由 @Import(AutoConfigurationPackages.Registrar.class) 组成
+
+    @Import 注解可以导入类到 Spring Ioc 中, 对 ImportSelector, ImportBeanDefinitionRegistrar
+    有特殊处理, 对 ImportSelector 会导入它返回的所有类, ImportBeanDefinitionRegistrar 会
+    将 **添加该注解的类所在的 package** 作为 **自动配置 package** 进行管理, 让包中的类及子包
+    中的类能被自动扫描到 Spring Ioc 中.
+
+    - [深入 spring boot 原理](https://www.cnblogs.com/hjwublog/p/10332042.html)
+    - [Spring @Import 机制](https://www.jianshu.com/p/3c5922ec3686)
+
+18. java 类加载机制
+
+    加载过程:
+
+        - 加载
+        - 链接
+            - 验证
+            - 准备
+            - 解析
+        - 初始化
+
+    何时开始类的初始化?
+        主动引用:
+        - 创建类实例
+        - 访问类的静态变量(除常量)
+        - 访问类的静态方法
+        - Class.forName
+        - 初始化一个类时, 父类还未初始化, 先初始化父类
+        - 虚拟机启动时, 定义 main 方法的类先启动
+
+    Class.forName 跟 ClassLoader.load 有什么区别?
+
+    Class.forName 会执行初始化, ClassLoader.load 不会执行初始化
+
+    能不能自己写个类叫 java.lang.String?
+
+    不能 defineClass -> preDifineClass 会检验是不是以 `java.` 开头, 会抛 SecurityException 异常
+    且 defineClass 为 `final` 不能被重写
+
+    自定义 ClassLoader 打破双亲委派模型?
+
+    一般自定义 ClassLoader 重写 `findClass` 方法, 打破双亲委派模型需要重写 `loadClass` 方法
+
+    [类加载机制](https://juejin.im/post/6844903564804882445#heading-4)
+
+19. redis 持久化策略
+
+    [持久化策略浅析](https://segmentfault.com/a/1190000009537768)
+
+20. mysql mvcc, gap 锁, 解决快照读, 当前读
+
+    [mvcc 和 间隙读](https://blog.csdn.net/wxy941011/article/details/79604704)
+
+21. mysql explain 执行计划分析
+
+    [mysql 性能优化神器 explain 使用分析](https://segmentfault.com/a/1190000008131735)
+
+22. 如何查找慢 sql
+
+    TODO:
+
+23. redis 热点 key, 怎么查找, 怎么处理
+
+    TODO:
+
+24. redis 缓存淘汰策略
+
+    LRU(最久未使用), random, ttl(离过期时间最近), LFU(使用频率最少)
+
+    LFU: 16 位时钟, 8 位频率(最多 255), redis 并没有使用线性上升的方式, 而是通过
+    一个复杂的公式, 通过配置两个参数来调整数据的递增速度
+
+    uint8_t LFULogIncr(uint8_t counter) {
+        if (counter == 255) return 255;
+        double r = (double)rand()/RAND_MAX;
+        double baseval = counter - LFU_INIT_VAL;
+        if (baseval < 0) baseval = 0;
+        double p = 1.0/(baseval*server.lfu_log_factor+1);
+        if (r < p) counter++;
+        return counter;
+    }
+
+    [redis 的缓存淘汰策略 LRU 和 LFU](https://www.jianshu.com/p/c8aeb3eee6bc)
+
