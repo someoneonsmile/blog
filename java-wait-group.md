@@ -10,7 +10,7 @@
 
 ```java
 
-///:WaitGroup.java
+//:WaitGroup.java
 
 import java.io.Serializable;
 import java.util.concurrent.TimeUnit;
