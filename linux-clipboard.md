@@ -26,20 +26,12 @@ function isStdinTTY() {
     return process.stdin.isTTY || process.env.STDIN === '0';
 }
 
-function isStdoutTTY() {
-    return process.stdout.isTTY || process.env.STDOUT === '1';
-}
-
-if (isStdinTTY()) {
-    console.log(clipboardy.readSync());
-} else {
-    (async () => {
+(async () => {
+    if (!isStdinTTY()) {
         clipboardy.writeSync(await getStdin());
-        if (!isStdoutTTY()) {
-            console.log(clipboardy.readSync());
-        }
-    })();
-}
+    }
+    console.log(clipboardy.readSync());
+})()
 ```
 
 ## 使用
