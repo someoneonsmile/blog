@@ -11,3 +11,10 @@
 ## 命令行下输入光标下单词
 
 `<c-r><c-w>`
+
+## global 命令
+
+global 可对匹配的所有行执行操作, 可配合 normal 命令
+
+> `:g/^reg$/normal .`
+> `:g/^reg$/normal .`
