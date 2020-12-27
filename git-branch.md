@@ -60,8 +60,8 @@
 
 ## 分支查找
 
-`git branch --merged`
-`git branch --no-merged`
-`git branch --contains <commit>`
-`git branch --no-contains <commit>`
+- `git branch --merged`
+- `git branch --no-merged`
+- `git branch --contains <commit>`
+- `git branch --no-contains <commit>`
 
