@@ -17,3 +17,6 @@
 - alias-finder
 - oh-my-zsh
 - nvim
+- tig (git)
+- httpie
+
