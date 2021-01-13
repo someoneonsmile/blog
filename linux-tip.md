@@ -21,3 +21,11 @@
 - sed 原文件执行快速备份
 
     `sed -i.bak 's/a/b' file` 会将原文件备份到 `file.bak`
+
+- grep rg 查看过滤行的上下文
+
+    `grep -A n` `grep -B n` `grep -C n` `rg -A -B -C`
+
+- alias 别名快捷操作
+
+    `L='| less'` `LL='2>&1 | less'` `NE='2> /dev/null'` `NUL='> /dev/null 2>&1'`
