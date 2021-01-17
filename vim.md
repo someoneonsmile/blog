@@ -22,3 +22,14 @@ global 可对匹配的所有行执行操作, 可配合 normal 命令
 ## 不重启 `vim` 的情况下，重载配置文件
 
 `:so %` or `:so ~/.vimrc`
+
+## vim 配置文件结构
+
+- device.vim
+- gui.vim
+- set.vim
+- keymap.vim
+- command.vim
+- autocommand.vim
+- function.vim
+- plugin.vim
