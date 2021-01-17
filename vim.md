@@ -18,3 +18,7 @@ global 可对匹配的所有行执行操作, 可配合 normal 命令
 
 > `:g/^reg$/normal .`
 > `:g/^reg$/normal .`
+
+## 不重启 `vim` 的情况下，重载配置文件
+
+`:so %` or `:so ~/.vimrc`
