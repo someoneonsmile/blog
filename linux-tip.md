@@ -29,3 +29,8 @@
 - alias 别名快捷操作
 
     `L='| less'` `LL='2>&1 | less'` `NE='2> /dev/null'` `NUL='> /dev/null 2>&1'`
+
+- seq 输出序列
+
+    `seq` 组合 `xargs` 遍历指定次数, `seq 1000 | xargs -i dd if=/dev/zero of={} bs=1k count=256`
+
