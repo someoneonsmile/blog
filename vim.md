@@ -40,6 +40,8 @@
 
 `/nostart \zs pattern \ze noend`: `\zs` 用于指定匹配开始边界, `\ze` 用于指定匹配结束边界
 
+`:%s//~/gc`: `c` 标识符会在每次替换前进行确认
+
 ## global 命令
 
 `global` 可对匹配的所有行执行操作, 可配合 `normal` 命令
