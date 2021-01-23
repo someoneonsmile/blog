@@ -48,10 +48,16 @@
 
 `global` 可对匹配的所有行执行操作, 可配合 `normal` 命令
 
-> `:g/^reg$/normal .`
-> `:g/^reg$/normal .`
+`:g/^reg$/normal .`
 
 `:vglobal`(`:v`), `:global!`(`:g!`) 可对不匹配的所有行执行操作
+
+`:g/{/ .+1,/}/-1 sort`: 可对 `{}` 内的文本行按照字母顺序重新排列
+
+> `global` 命令的标准格式如下:
+> `:g/{pattern}/[cmd]`, 牢记 `Ex` 命令通常都会接收 "范围" 作为其参数
+> `:global` 命令内容的 `[cmd]`, 该规则依然有效
+> `:g/{pattern}/[range][cmd]`
 
 ## `:t` `:m` 复制和移动行
 
