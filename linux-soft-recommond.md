@@ -19,4 +19,5 @@
 - nvim
 - tig (git)
 - httpie
+- lookatme
 
