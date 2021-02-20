@@ -72,6 +72,10 @@
 
 `:so %` or `:so ~/.vimrc`
 
+## 设置错误提示侧边拦宽度
+
+`set signcolumn=yes:1`
+
 ## vim 配置文件结构
 
 - device.vim
