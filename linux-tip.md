@@ -34,3 +34,18 @@
 
     `seq` 组合 `xargs` 遍历指定次数, `seq 1000 | xargs -i dd if=/dev/zero of={} bs=1k count=256`
 
+- 终端关闭声音
+
+  - /etc/inputrc
+
+    ```sh
+    set set bell-style none
+    ```
+
+  - vim
+
+    ```vim
+    set visualbell
+    set t_vb=
+    ```
+
