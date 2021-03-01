@@ -456,3 +456,14 @@ Kafka分布式的单位是 `partition`，同一个 `partition` 用一个 `write 
 
 ## 缓存雪崩，击穿怎么处理
 
+---
+
+## epoll 更高效的原因
+
+1. select和poll的动作基本一致，只是poll采用链表来进行文件描述符的存储，而select采用fd标注位来存放，所以select会受到最大连接数的限制，而poll不会。
+2. select、poll、epoll虽然都会返回就绪的文件描述符数量。但是select和poll并不会明确指出是哪些文件描述符就绪，而epoll会。造成的区别就是，系统调用返回后，调用select和poll的程序需要遍历监听的整个文件描述符找到是谁处于就绪，而epoll则直接处理即可。
+3. select、poll都需要将有关文件描述符的数据结构拷贝进内核，最后再拷贝出来。而epoll创建的有关文件描述符的数据结构本身就存于内核态中，系统调用返回时利用mmap()文件映射内存加速与内核空间的消息传递：即epoll使用mmap减少复制开销。
+4. select、poll采用轮询的方式来检查文件描述符是否处于就绪态，而epoll采用回调机制。造成的结果就是，随着fd的增加，select和poll的效率会线性降低，而epoll不会受到太大影响，除非活跃的socket很多。
+5. epoll的边缘触发模式效率高，系统不会充斥大量不关心的就绪文件描述符
+
+[彻底搞懂 epoll 高效的原因](https://www.jianshu.com/p/31cdfd6f5a48)
