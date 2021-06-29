@@ -20,4 +20,8 @@
 - tig (git)
 - httpie
 - lookatme
+- fd
+- tldr
+- vifm (file manager)
+- bpswm (window manager)
 
