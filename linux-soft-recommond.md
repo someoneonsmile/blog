@@ -24,4 +24,4 @@
 - tldr
 - vifm (file manager)
 - bpswm (window manager)
-
+- w3m (text web broser)
