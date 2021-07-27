@@ -166,4 +166,8 @@ sudo pacman -S polybar
 sudo pacman -S rofi
 ```
 
+## 取消笔记本合盖挂起
 
+```sh
+echo 'HandlerLidSwitch=ignore' | sudo tee -a /etc/systemd/logind.conf
+```
