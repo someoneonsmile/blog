@@ -8,4 +8,5 @@
 - [ ] `git log --all --graph --decorate` 查看树形提交
 - [ ] `git add :/` 从根目录添加全部
 - [ ] `git push [origin] [commit_id]:[remote_branch]` origin: 远程仓库名, commit_id: 提交 hash, remote_branch: 远程分支名
+- [ ] `git rebase --onto=[master] [server] [client]` client 在 server 之后的提交在 master 上重放
 
