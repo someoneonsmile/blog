@@ -87,6 +87,19 @@
 
 `set signcolumn=yes:1`
 
+## vim ctrl-s 卡死
+
+`<C-s>`: 锁定屏幕, linux 终端让屏幕暂停输入, 键盘仍然可以使用, 非 vim 问题
+`<C-q>`: 解锁屏幕
+
+## 禁用 keymap
+
+`map to <NOP>`
+
+## 查看特殊键码
+
+`:h key-codes`
+
 ## vim 配置文件结构
 
 - device.vim
