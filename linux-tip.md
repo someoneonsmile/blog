@@ -62,3 +62,10 @@
     ```
 
     两种方法推荐使用后者, 支持嵌套
+
+- install 复制文件
+
+    ```shell
+    # 复制文件到指定目录(目录不存在时创建), 且设置权限
+    install -Dm644 source_file dest_dir/dest_file
+    ```
