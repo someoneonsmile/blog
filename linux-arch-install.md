@@ -176,8 +176,8 @@ echo 'HandlerLidSwitch=ignore' | sudo tee -a /etc/systemd/logind.conf
 
 ```sh
 # CLI
-sudo systemctl --set-default multi-user.target
+sudo systemctl set-default multi-user.target
 
 # 桌面
-sudo systemctl --set-default graphical.target
+sudo systemctl set-default graphical.target
 ```
