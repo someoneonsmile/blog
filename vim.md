@@ -110,3 +110,22 @@
 - autocommand.vim
 - function.vim
 - plugin.vim
+
+## bufnr 0
+
+> `bufnr: 0` mean current buf
+> `window` `tab` 也是同样
+
+## :执行 lua 函数的方式
+
+- `:lua func_name`
+- `:v:lua.func_name`
+
+## vim ^= += -=
+
+- `+=`: 在之后追加
+- `^=`: 在之前追加
+- `-=`: 减少
+
+> lua api 也提供了 `^` `+` `-` 符号操作
+> ex: `vim.opt.clipboard = vim.opt.clipboard ^ 'unnamedplus'`
