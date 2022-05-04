@@ -14,4 +14,4 @@
 - [ ] `git reset origin/remote_branch~ --hard` 重置到 commit_id
 - [ ] `git commit --amend --date $(date -R)` 重新设置 commit date
 - [ ] `origin/remote_branch` 只是远程分支头结点 commit_id 的引用
-
+- [ ] `git checkout --[outs/theirs] PATH/FILE` resolve easy/obvious conflicts
