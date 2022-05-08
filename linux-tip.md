@@ -86,3 +86,20 @@
 
     # exe 链接对应的就是可执行文件的路径
     ```
+
+- 替换环境变量
+
+    ···shell
+    envsubst
+    # Replace environment variables in stdin and output to stdout:
+    echo '$HOME' | envsubst
+
+    # Replace environment variables in an input file and output to stdout:
+    envsubst < path/to/input_file
+
+    # Replace environment variables in an input file and output to a file:
+    envsubst < path/to/input_file > path/to/output_file
+
+    # Replace environment variables in an input file from a space-separated list:
+    envsubst '$USER $SHELL $HOME' < path/to/input_file
+    ```
