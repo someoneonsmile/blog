@@ -39,13 +39,14 @@
   - /etc/inputrc
 
     ```sh
-    set set bell-style none
+    set bell-style none
     ```
 
   - vim
 
     ```vim
-    set visualbell
+    set belloff=all
+    # nvim don't have t_xx
     set t_vb=
     ```
 
@@ -102,4 +103,32 @@
 
     # Replace environment variables in an input file from a space-separated list:
     envsubst '$USER $SHELL $HOME' < path/to/input_file
+    ```
+
+- 编辑管道 with $EDITOR
+
+    ```sh
+    echo foo | vipe | xargs echo
+    ```
+    [github](https://github.com/juliangruber/vipe)
+
+    > moreutils
+
+
+- 生成 temp 文件并用 $EDITOR 编辑
+
+    ```sh
+    # 生成临时文件
+    mktemp
+    # 生成临时文件并用编辑器编辑
+    $EDITOR $(mktemp)
+    ```
+
+- bash 随机数
+
+    ```
+    # RANDOM shell 变量
+    echo $RANDOM
+    # $$ 变量返回当前进程号
+    echo $$
     ```
