@@ -138,14 +138,24 @@
 
 ### `set laststatus=3`
 
+```vim
+hightlight WinSeparator guibg=None
+```
 > 只展示最后一个窗口的状态栏
 
 
+## `:=`
+
+- `:=`: print the last line num
+- `{range}:=`: print the last line num in {range}
+    ex: `:.=` print the current line num
+
+## `:!!`
+
+> repeat laste `:!{cmd}`
 
 
+## `q:`
 
-
-
-
-
+> 打开命令行历史窗口
 
