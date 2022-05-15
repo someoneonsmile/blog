@@ -138,3 +138,19 @@
     ```sh
     $(history | fzf)
     ```
+
+- print rest fields
+
+    ```
+    # in awk
+    # Set the field(s) you want to skip to blank:
+    awk '$1=""; print $0;' < file_name
+    awk '$1=$2=""; print $0;' < file_name
+
+    # in cut
+    cut -d ' ' -f 2-
+    cut -d \  -f 2-
+    ```
+
+    - [stackoverflow awk](https://stackoverflow.com/questions/18457486/print-rest-of-the-fields-in-awk)
+    - [stackoverflow cut](https://stackoverflow.com/questions/2961635/using-awk-to-print-all-columns-from-the-nth-to-the-last/2961994#2961994)
