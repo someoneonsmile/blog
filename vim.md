@@ -164,3 +164,12 @@ hightlight WinSeparator guibg=None
 > `:h filter`
 
 `filter`: 过滤命令的输出
+
+## lua 捕获 EX 命令输出
+
+`vim.api.nvim_exec`
+
+```lua
+local output = vim.api.nvim_exec([[map]], true)
+print(output)
+```
