@@ -159,3 +159,8 @@ hightlight WinSeparator guibg=None
 
 > 打开命令行历史窗口
 
+## `:filter`
+
+> `:h filter`
+
+`filter`: 过滤命令的输出
