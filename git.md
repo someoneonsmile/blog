@@ -2,7 +2,7 @@
 
 - [ ] `git blame` 查看每行变动
 - [ ] `git init --bare` 创建空仓库, 可作为远程仓库
-- [ ] `git bisect 二分查找提交历史, 查找哪一次提交破坏的单元测试
+- [ ] `git bisect` 二分查找提交历史, 查找哪一次提交破坏的单元测试
 - [ ] `git rebase` 干净的提交历史
 - [ ] `git add -p` 添加文件的部分改动
 - [ ] `git log --all --graph --decorate` 查看树形提交
@@ -17,23 +17,24 @@
 - [ ] `git checkout --[outs/theirs] PATH/FILE` resolve easy/obvious conflicts
 
 
-- [ ] `git rebase` options
+- [ ] `git rebase`: options
     - `--onto`: rebase 之后的 commit 开始位置
-    - `--keep-base`: `git rebase --keep-base <upstream> <branch>` 等于 `git base --onto <upstream> <upstream>`
-        `<upstream>`: 默认为上游分支, 也可能是任务有效提交 (maybe any valid commit)
+    - `--keep-base`: `git rebase --keep-base <upstream> <branch>` 等于 `git base --onto <upstream> <upstream>`  
+        `<upstream>`: 默认为上游分支, 也可能是任务有效提交 (maybe any valid commit)  
         `<branch>`: working branch; default to `HEAD`
-    - `--autosquash`: 在 `-i` 模式下, 如果 commit log 以 `squash! ...` | `fixup! ...` | `amend! ...` 开头
-        并且 `todo list` 中包含 commit 的 log 匹配 `...` 会自动修改 `todo list`
+    - `--autosquash`: 在 `-i` 模式下, 如果 commit log 以 `squash! ...` | `fixup! ...` | `amend! ...` 开头  
+        并且 `todo list` 中包含 commit 的 log 匹配 `...` 会自动修改 `todo list`  
         配合使用
         - `git commit --fixup=<commit>`
         - `git commit --fixup=amand:<commit>`
         - `git commit --fixup=reword:<commit>`
         - `git commit --squash=<commit>`
+
     - `--root`: rebase from the branch root
     - `-r, --rebase-merges=[=(rebase-cousins|no-rebase-cousins)]`: 保留 merge 节点
 
-    -- `--no-keep-empty, --keep-empty`: 是否保留在 rebase 之前的 empty commit
-    -- `--empty={drop,keep,ask}`: 是否保留 rebase 之前 not empty, rebase 之后 empty 的 commit
+    - `--no-keep-empty, --keep-empty`: 是否保留在 rebase 之前的 empty commit
+    - `--empty={drop,keep,ask}`: 是否保留 rebase 之前 not empty, rebase 之后 empty 的 commit
 
     - `--committer-date-is-author-date`: 用 author date, 将启用 --force-rebase
     - `--ignore-date, --reset-author-date`: 用 current time, 将启用 --force-rebase
