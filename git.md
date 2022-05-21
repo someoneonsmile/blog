@@ -22,7 +22,7 @@
     - `--keep-base`: `git rebase --keep-base <upstream> <branch>` 等于 `git base --onto <upstream> <upstream>`
         `<upstream>`: 默认为上游分支, 也可能是任务有效提交 (maybe any valid commit)
         `<branch>`: working branch; default to `HEAD`
-    - `--autosquash`: 配合 `git commit --fixup`, `git commit --fixup=amand:`, `git commit --fixup=reword:`, `git commit --squash`
+    - `--autosquash`: 配合 `git commit --fixup=<commit>`, `git commit --fixup=amand:<commit>`, `git commit --fixup=reword:<commit>`, `git commit --squash=<commit>`
     - `--root`: rebase from the branch root
     - `-r, --rebase-merges=[=(rebase-cousins|no-rebase-cousins)]`: 保留 merge 节点
 
