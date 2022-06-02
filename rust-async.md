@@ -47,3 +47,13 @@
 
   跟 try_for_each_concurrent 不同的是, 闭包的入参是 <item as Result>::output  
   返回值也是 Result 类型
+
+## futures stream concurrent (并发)
+
+实现异步流并发执行的三种方式 (前两种可以实现并发数限制, 背压)
+
+- `futures::stream:;iter` + `for_each_concurrent` / `try_for_each_concurrent`
+
+- `futures::stream:;iter` + `map (output = future)` + `buffer_unordered`
+
+- 普通 iter 通过 `collect` 转换成 `futures::stream::FuturesUnordered`
