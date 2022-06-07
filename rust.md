@@ -4,6 +4,10 @@
 | ---------- | ----------- |
 | 2022-06-06 | rust / tips |
 
+## match pattern
+
+- `|` in match pattern. ex: `match v {Some(v) | None => {}, _ => {}}`
+
 ## match pattern to bool
 
 - `matches!`: convert the match pattern to bool
