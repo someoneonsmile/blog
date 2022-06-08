@@ -111,7 +111,7 @@
 - function.vim
 - plugin.vim
 
-## bufnr 0
+## bufnr 0 in lua
 
 > `bufnr: 0` mean current buf
 > `window` `tab` 也是同样
@@ -138,22 +138,23 @@
 
 ### `set laststatus=3`
 
+> 只展示最后一个窗口的状态栏
+
+去除分隔背景, 减少分隔线宽度
+
 ```vim
 hightlight WinSeparator guibg=None
 ```
-> 只展示最后一个窗口的状态栏
-
 
 ## `:=`
 
 - `:=`: print the last line num
 - `{range}:=`: print the last line num in {range}
-    ex: `:.=` print the current line num
+  ex: `:.=` print the current line num
 
 ## `:!!`
 
 > repeat laste `:!{cmd}`
-
 
 ## `q:`
 
@@ -173,3 +174,141 @@ hightlight WinSeparator guibg=None
 local output = vim.api.nvim_exec([[map]], true)
 print(output)
 ```
+
+## `h: g`
+
+vim 中以 `g` 开头的命令
+
+```
+tag		char	      note action in Normal mode	~
+--------------------------------------------------------------------------------
+
+|gstar|		g*		1  like "*", but without using "\<" and "\>"
+|g#|		g#		1  like "#", but without using "\<" and "\>"
+
+--------------------------------------------------------------------------------
+
+|g&|		g&		2  repeat last ":s" on all lines
+
+--------------------------------------------------------------------------------
+
+|g'|		g'{mark}	1  like |'| but without changing the jumplist
+|g`|		g`{mark}	1  like |`| but without changing the jumplist
+
+--------------------------------------------------------------------------------
+
+|g+|		g+		   go to newer text state N times
+|g-|		g-		   go to older text state N times
+
+|g,|		g,		1  go to N newer position in change list
+|g;|		g;		1  go to N older position in change list
+
+--------------------------------------------------------------------------------
+
+|g?|		g?		2  Rot13 encoding operator
+|g?g?|		g??		2  Rot13 encode current line
+|g?g?|		g?g?		2  Rot13 encode current line
+
+--------------------------------------------------------------------------------
+
+|gJ|		gJ		2  join lines without inserting space
+
+|gI|		gI		2  like "I", but always start in column 1
+|gi|		gi		2  like "i", but first move to the |'^| mark
+
+|gn|		gn	      1,2  find the next match with the last used
+				   search pattern and Visually select it
+|gN|		gN	      1,2  find the previous match with the last used
+				   search pattern and Visually select it
+
+|gp|		["x]gp		2  put the text [from register x] after the
+				   cursor N times, leave the cursor after it
+|gP|		["x]gP		2  put the text [from register x] before the
+				   cursor N times, leave the cursor after it
+
+--------------------------------------------------------------------------------
+
+|g^|		g^		1  when 'wrap' off go to leftmost non-white
+				   character of the current line that is on
+				   the screen; when 'wrap' on go to the
+				   leftmost non-white character of the current
+				   screen line
+|g0|		g0		1  when 'wrap' off go to leftmost character of
+				   the current line that is on the screen;
+				   when 'wrap' on go to the leftmost character
+				   of the current screen line
+|g_|		g_		1  cursor to the last CHAR N - 1 lines lower
+|g$|		g$		1  when 'wrap' off go to rightmost character of
+				   the current line that is on the screen;
+				   when 'wrap' on go to the rightmost character
+				   of the current screen line
+
+|gm|		gm		1  go to character at middle of the screenline
+|gM|		gM		1  go to character at middle of the text line
+
+--------------------------------------------------------------------------------
+
+|gg|		gg		1  cursor to line N, default first line
+
+|gj|		gj		1  like "j", but when 'wrap' on go N screen
+				   lines down
+|gk|		gk		1  like "k", but when 'wrap' on go N screen
+				   lines up
+
+|go|		go		1  cursor to byte N in the buffer
+
+
+--------------------------------------------------------------------------------
+
+|gt|		gt		   go to the next tab page
+|gT|		gT		   go to the previous tab page
+
+--------------------------------------------------------------------------------
+
+|gu|		gu{motion}	2  make Nmove text lowercase
+|gU|		gU{motion}	2  make Nmove text uppercase
+|g~|		g~{motion}	2  swap case for Nmove text
+
+--------------------------------------------------------------------------------
+
+|gv|		gv		   reselect the previous Visual area
+|gV|		gV		   don't reselect the previous Visual area
+				   when executing a mapping or menu in Select
+				   mode
+
+--------------------------------------------------------------------------------
+
+|gq|		gq{motion}	2  format Nmove text
+|gw|		gw{motion}	2  format Nmove text and keep cursor
+
+|g@|		g@{motion}	   call 'operatorfunc'
+
+--------------------------------------------------------------------------------
+```
+
+跳转到某行:
+
+- `[count]G`
+- `[count]gg`
+- `:[count]`
+
+## `h: opfunc`
+
+`g@` 配合 `opfunc` 自定义操作符
+
+ex: `surround.vim`:
+
+```
+nmap ys function! s:opfunc() let &opfunc = 'some_func' return g@ endfunction
+
+也可以在映射上直接连接上 {motion}
+
+nnoremap <expr>   <Plug>Yssurround '^'.v:count1.<SID>opfunc('setup').'g_'
+
+```
+
+> `g@`: call `opfunc`
+
+## `h: z`
+
+- `z=`: spell suggest
