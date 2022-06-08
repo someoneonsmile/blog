@@ -1,7 +1,7 @@
 # vim 技巧
 
-|    date    |    tag     |
-|    ---     |    ---     |
+| date       | tag        |
+| ---------- | ---------- |
 | 2020-11-05 | vim/repeat |
 
 ## vim 重复输入
@@ -296,7 +296,8 @@ tag		char	      note action in Normal mode	~
 
 `g@` 配合 `opfunc` 自定义操作符
 
-ex: `surround.vim`:
+ex: `surround.vim`  
+ex: `easy_align.vim`
 
 ```
 nmap ys function! s:opfunc() let &opfunc = 'some_func' return g@ endfunction
