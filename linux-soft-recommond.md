@@ -1,7 +1,7 @@
 # soft recommond
 
-|    date    | tag  |
-|    ---     | ---  |
+| date       | tag  |
+| ---------- | ---- |
 | 2020-12-27 | soft |
 
 ## linux
@@ -25,6 +25,8 @@
 - vifm (file manager)
 - bpswm (window manager)
 - w3m (text web broser)
+- tokei (count your code)
+- hyperfine (cli benchmarking tool)
 
 - vipe (pipe in and out of $EDITOR) [github](https://github.com/juliangruber/vipe)
 - envsubst (replace the env variable)
