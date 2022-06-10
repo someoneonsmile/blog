@@ -27,6 +27,7 @@
 - w3m (text web broser)
 - tokei (count your code)
 - hyperfine (cli benchmarking tool)
+- zoxide (autojump, smart cd)
 
 - vipe (pipe in and out of $EDITOR) [github](https://github.com/juliangruber/vipe)
 - envsubst (replace the env variable)
