@@ -16,25 +16,63 @@
 - [ ] `origin/remote_branch` 只是远程分支头结点 commit_id 的引用
 - [ ] `git checkout --[outs/theirs] PATH/FILE` resolve easy/obvious conflicts
 
-
 - [ ] `git rebase`: options
-    - `--onto`: rebase 之后的 commit 开始位置
-    - `--keep-base`: `git rebase --keep-base <upstream> <branch>` 等于 `git base --onto <upstream> <upstream>`  
-        `<upstream>`: 默认为上游分支, 也可能是任务有效提交 (maybe any valid commit)  
-        `<branch>`: working branch; default to `HEAD`
-    - `--autosquash`: 在 `-i` 模式下, 如果 commit log 以 `squash! ...` | `fixup! ...` | `amend! ...` 开头  
-        并且 `todo list` 中包含 commit 的 log 匹配 `...` 会自动修改 `todo list`  
-        配合使用
-        - `git commit --fixup=<commit>`
-        - `git commit --fixup=amand:<commit>`
-        - `git commit --fixup=reword:<commit>`
-        - `git commit --squash=<commit>`
 
-    - `--root`: rebase from the branch root
-    - `-r, --rebase-merges=[=(rebase-cousins|no-rebase-cousins)]`: 保留 merge 节点
+  - `--onto`: rebase 之后的 commit 开始位置
+  - `--keep-base`: `git rebase --keep-base <upstream> <branch>` 等于 `git base --onto <upstream> <upstream>`  
+     `<upstream>`: 默认为上游分支, 也可能是任务有效提交 (maybe any valid commit)  
+     `<branch>`: working branch; default to `HEAD`
+  - `--autosquash`: 在 `-i` 模式下, 如果 commit log 以 `squash! ...` | `fixup! ...` | `amend! ...` 开头  
+     并且 `todo list` 中包含 commit 的 log 匹配 `...` 会自动修改 `todo list`  
+     配合使用
 
-    - `--no-keep-empty, --keep-empty`: 是否保留在 rebase 之前的 empty commit
-    - `--empty={drop,keep,ask}`: 是否保留 rebase 之前 not empty, rebase 之后 empty 的 commit
+    - `git commit --fixup=<commit>`
+    - `git commit --fixup=amand:<commit>`
+    - `git commit --fixup=reword:<commit>`
+    - `git commit --squash=<commit>`
 
-    - `--committer-date-is-author-date`: 用 author date, 将启用 --force-rebase
-    - `--ignore-date, --reset-author-date`: 用 current time, 将启用 --force-rebase
+  - `--root`: rebase from the branch root
+  - `-r, --rebase-merges=[=(rebase-cousins|no-rebase-cousins)]`: 保留 merge 节点
+
+  - `--no-keep-empty, --keep-empty`: 是否保留在 rebase 之前的 empty commit
+  - `--empty={drop,keep,ask}`: 是否保留 rebase 之前 not empty, rebase 之后 empty 的 commit
+
+  - `--committer-date-is-author-date`: 用 author date, 将启用 --force-rebase
+  - `--ignore-date, --reset-author-date`: 用 current time, 将启用 --force-rebase
+
+- [ ] split a subdirectory to a new git repo and keep the history
+
+  ```
+  git checkout [your_branch_name]
+  git filter-branch --prune-empty --subdirectory-filter relative/path/to/subdirectory [your_current_branch_name]
+  git remote --set-url origin https://github.com/...
+  git push -u origin [your_branch_name]
+
+  ```
+
+  or
+
+  ```
+  git filter-repo --path path/subpath
+  ```
+
+  > from [blog](https://ao.ms/how-to-split-a-subdirectory-to-a-new-git-repository-and-keep-the-history/)
+
+  > another [github docs](https://docs.github.com/en/get-started/using-git/splitting-a-subfolder-out-into-a-new-repository)
+
+- [ ] git clean the reflog and git unreachable commit
+
+  ```
+  git reflog expire --expire-unreachable=now --all
+  git gc --prune=now
+  ```
+
+  > from [stackoverflow](https://stackoverflow.com/questions/1904860/how-to-remove-unreferenced-blobs-from-my-git-repository)
+
+- [ ] gpg sign old commits
+
+  ```
+  git filter-branch --commit-filter 'git commit-tree -S "$@";' <COMMIT>..HEAD
+  ```
+
+  > from [stackoverflow](https://superuser.com/questions/397149/can-you-gpg-sign-old-commits)
