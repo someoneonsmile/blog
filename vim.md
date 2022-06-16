@@ -175,6 +175,17 @@ local output = vim.api.nvim_exec([[map]], true)
 print(output)
 ```
 
+## `verbose`: 查看定义
+
+- `:verbose map <space>`: 查看所有映射
+- `:verbose nmap <space>`: 查看 <space> 开头的 n 映射
+- `:verbose set option_name`: option_name 的值, 及定义位置
+- `:verbose function func_name`: 查看函数及定义位置
+- `:verbose :command command_name`: 查看命令及定义位置
+- `:verbose :[anything you can input in the ex]`: 查看命令及定义位置
+
+> [stackexchange](https://vi.stackexchange.com/questions/21295/how-to-ask-vim-where-function-or-command-was-defined)
+
 ## `h: g`
 
 vim 中以 `g` 开头的命令
