@@ -96,6 +96,8 @@
 
 `map to <NOP>`
 
+> note: map to '' in lua
+
 ## 查看特殊键码
 
 `:h key-codes`
@@ -136,7 +138,7 @@
 
 > `:lua =`: since nvim-0.7, pretty_print the lua express
 
-### `set laststatus=3`
+### `set laststatus=3`: 全局状态栏
 
 > 只展示最后一个窗口的状态栏
 
@@ -313,7 +315,7 @@ ex: `easy_align.vim`
 ```
 nmap ys function! s:opfunc() let &opfunc = 'some_func' return g@ endfunction
 
-也可以在映射上直接连接上 {motion}
+也可以在映射上直接拼接上 {motion}
 
 nnoremap <expr>   <Plug>Yssurround '^'.v:count1.<SID>opfunc('setup').'g_'
 
@@ -324,3 +326,81 @@ nnoremap <expr>   <Plug>Yssurround '^'.v:count1.<SID>opfunc('setup').'g_'
 ## `h: z`
 
 - `z=`: spell suggest
+
+## Input Method
+
+`:h iminsert`, `set iminsert=[0,1,2]`
+
+- 0: 禁用输入法自动切换
+- 1: lmap is ON and IM is off, `:h lmap`: for insert/cmd/search mode map with auto switch im
+- 2: 启用输入法自动切换, lmap is off and IM is ON
+
+同时会影响
+
+- `imsearch`: 搜索模式输入法自动切换, `imcmdline`: 命令行输入法自动切换, 不受
+  `iminsert` 影响
+
+- `CTRL-^`: edit the alternative file, 编辑(切换文件)
+
+`:h im-server`
+
+## keymap
+
+- `!`, `:map!`: insert and command line mode
+
+- `o`, `:omap`: operator pending mode
+
+- `''`, `:map`: normal visual select and operator-pending
+
+- `v`, `:vmap`: visual and select, ex: vnoremap <silent> F :<C-U>ggVG<CR>, 类似于可视模式下的操作符
+
+### 取消 keymap
+
+- `unmap key`: in vim
+
+- `vim.keymap.del`: in lua
+
+## 操作符, 文本对象
+
+- [ ] opfunc defined, use g@ and opfunc
+
+- [ ] textobj defined, use the operator-pending map, maybe it actually same as visual, pending 等待选区
+
+      ```viml
+      for [s:k, s:m] in  [['ie', 'ggVG'], ['il', '^vg_'], ['iz', '[zV]z']]
+          execute 'onoremap <silent> ' . s:k . ' :normal! ' . s:m . '<CR>'
+          execute 'vnoremap <silent> ' . s:k . ' :normal! ' . s:m . '<CR>'
+      endfor
+      unlet! s:k s:m
+      ```
+      [reddit](https://www.reddit.com/r/vim/comments/48e4ci/vimscript_how_to_create_a_new_text_object/)
+
+## program
+
+- `=`: `equalprg`, `indentexpr`
+- `gq` `gw`: `formatexpr`, `formatprg`
+
+- `grepprg`: `make`
+- `makeprg`: `grep`
+
+## 模拟输入
+
+- `nvim_feedkeys`
+
+阻塞的方式模拟用户输入
+
+- `nvim_input`
+
+低级 Api, 以非阻塞方式运行
+
+## jump in help
+
+在帮助文件中跳转的两种方式
+
+- `K`: `<shift+k>`
+- `<C-]`
+
+## wincmd
+
+`:[count]winc[md] {arg}`: Like executing CTRL-W [count] {arg}.  
+Example: `:wincmd j`
