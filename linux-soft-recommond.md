@@ -31,3 +31,8 @@
 
 - vipe (pipe in and out of $EDITOR) [github](https://github.com/juliangruber/vipe)
 - envsubst (replace the env variable)
+
+## shell
+
+- fish
+- zx (top level await, write with js, .mjs)
