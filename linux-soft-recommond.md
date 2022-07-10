@@ -32,6 +32,8 @@
 - vipe (pipe in and out of $EDITOR) [github](https://github.com/juliangruber/vipe)
 - envsubst (replace the env variable)
 
+- comby(structural code search and replace) [comby.dev](https://comby.dev)
+
 ## shell
 
 - fish
