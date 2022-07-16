@@ -35,6 +35,8 @@
 
 - comby(structural code search and replace) [comby.dev](https://comby.dev)
 
+- when-change: watch the file change and execute action
+
 ## shell
 
 - fish
