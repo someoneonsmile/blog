@@ -4,6 +4,10 @@
 | ---------- | --------- |
 | 2021-01-12 | linux/tip |
 
+## other book
+
+- [the-art-of-command-line](https://github.com/jlevy/the-art-of-command-line)
+
 ## 命令
 
 - tail 监控重新创建的文件
