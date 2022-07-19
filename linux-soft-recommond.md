@@ -10,16 +10,16 @@
 - ncdu
 - fzf
 - ripgrep (rg)
-- jq
-- bat
-- axel
-- glow
+- jq (json)
+- bat (cat alternative)
+- axel (downloader)
+- glow (markdown preview)
 - alias-finder
 - oh-my-zsh
 - nvim
 - tig (git)
 - httpie
-- lookatme
+- lookatme (markdown slide)
 - fd
 - tldr
 - vifm (file manager)
@@ -33,9 +33,11 @@
 - vipe (pipe in and out of $EDITOR) [github](https://github.com/juliangruber/vipe)
 - envsubst (replace the env variable)
 
-- comby(structural code search and replace) [comby.dev](https://comby.dev)
+- comby (structural code search and replace) [comby.dev](https://comby.dev)
 
 - when-change: watch the file change and execute action
+
+- zathura (document viewer, like pdf)
 
 ## shell
 
