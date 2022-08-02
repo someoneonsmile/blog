@@ -37,6 +37,8 @@
 
 - when-change: watch the file change and execute action
 
+- watchexec: watch the file change and execute action
+
 - zathura (document viewer, like pdf)
 
 ## shell
