@@ -41,6 +41,8 @@
 
 - zathura (document viewer, like pdf)
 
+- enca (encoding convert, better iconv)
+
 ## shell
 
 - fish
