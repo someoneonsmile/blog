@@ -24,17 +24,17 @@ ex: sum(A, dim):
 
 > [X, Y, Z] = `meshgrid(x, y, z)`
 
-`X`: size = [length(y), length(x), length(z)], 每一行都是 `x` 的副本
+`X`: `size = [length(y), length(x), length(z)]`, 每一行都是 `x` 的副本
 
-`Y`: size = [length(y), length(x), length(z)], 每一列都是 `y` 的副本
+`Y`: `size = [length(y), length(x), length(z)]`, 每一列都是 `y` 的副本
 
-`Z`: size = [length(y), length(x), length(z)], Z(:, :, i) = z(i)
+`Z`: `size = [length(y), length(x), length(z)]`, `Z(:, :, i) = z(i)`
 
 > `[X1, X2, ..., Xn] = ndgrid(x1, x2, ..., xn)`
 
 `xn`: 在 `dim=n` 的坐标向量
 
-`Xn`: size = [length(x1), length(x2), ..., length(xn)], Xn(:, :, ..., i) = xn(i)
+`Xn`: `size = [length(x1), length(x2), ..., length(xn)]`, `Xn(:, :, ..., i) = xn(i)`
 
 ### 范数
 
