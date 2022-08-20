@@ -95,7 +95,7 @@
 
 - 替换环境变量
 
-  ···shell
+  ```shell
   envsubst
 
   # Replace environment variables in stdin and output to stdout:
@@ -113,8 +113,6 @@
   # Replace environment variables in an input file from a space-separated list:
 
   envsubst '$USER $SHELL $HOME' < path/to/input_file
-
-  ```
 
   ```
 
