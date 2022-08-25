@@ -178,3 +178,9 @@
 - `split` 及 `cat`
 
   `split` 可以对大文件进行切分, `cat` 可以将切分的多个文件合并
+
+- 查看键编码
+
+  `xev | awk -F'[ )]+' '/^KeyPress/ { a[NR+2] } NR in a { printf "%-3s %s\n", $5, $8 }'`
+
+  `xmodmap -pke`
