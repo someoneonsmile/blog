@@ -174,3 +174,7 @@
 - `locate`
 
   fast find file, recommand `plocate` (faster locate)
+
+- `split` 及 `cat`
+
+  `split` 可以对大文件进行切分, `cat` 可以将切分的多个文件合并
