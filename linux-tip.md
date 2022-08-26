@@ -184,3 +184,8 @@
   `xev | awk -F'[ )]+' '/^KeyPress/ { a[NR+2] } NR in a { printf "%-3s %s\n", $5, $8 }'`
 
   `xmodmap -pke`
+
+- 模拟按键调用功能
+
+  通过 `xdotool` cli 程序可以方便的模拟按键或鼠标行为  
+  调用按键对应的功能

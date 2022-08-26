@@ -43,6 +43,11 @@
 
 - enca (encoding convert, better iconv)
 
+- xdotool (simulates key presses and mouse clicks on cli)
+
+  在命令行模拟键盘按键(快捷键), 在不方便调用命令  
+  或没有 shell 命令的时候, 可以方便调用对应功能
+
 ## shell
 
 - fish
