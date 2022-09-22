@@ -189,3 +189,11 @@
 
   通过 `xdotool` cli 程序可以方便的模拟按键或鼠标行为  
   调用按键对应的功能
+
+- convert 切图
+
+  ```sh
+  convert -crop 100%x25% +repage input.png output.png
+  ```
+
+  > install: `sudo pacman -S imagemagick`
