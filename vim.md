@@ -404,3 +404,12 @@ nnoremap <expr>   <Plug>Yssurround '^'.v:count1.<SID>opfunc('setup').'g_'
 
 `:[count]winc[md] {arg}`: Like executing CTRL-W [count] {arg}.  
 Example: `:wincmd j`
+
+## defaulttable
+
+`vim.defaulttable`
+
+```lua
+local a = vim.defaulttable()
+a.b.c = 1
+```
