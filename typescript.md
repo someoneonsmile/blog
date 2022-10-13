@@ -8,7 +8,7 @@
 
 - 从联合类型中去除 null 或者 undefined
 
-  `type NonNullType = NonNullable<NullType>`
+  `NonNullable`, ex:`type NonNullType = NonNullable<NullType>`
 
   [dev.to](https://dev.to/vborodulin/ts-how-to-override-properties-with-type-intersection-554l)
   [typescriptlang utility types](https://www.typescriptlang.org/docs/handbook/utility-types.html)
@@ -22,3 +22,7 @@
 - 获取属性的类型
 
   `type attrType = InterfaceType['attr']`
+
+- `TS` 工具类型
+
+  [typescriptlang](https://www.typescriptlang.org/docs/handbook/utility-types.html)
