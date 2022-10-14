@@ -26,3 +26,7 @@
 - `TS` 工具类型
 
   [typescriptlang](https://www.typescriptlang.org/docs/handbook/utility-types.html)
+
+- `readonly` 类型转为 `mutable`
+
+  [blog](https://bobbyhadz.com/blog/typescript-change-readonly-to-mutable)
