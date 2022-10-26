@@ -29,6 +29,7 @@
 - hyperfine (cli benchmarking tool)
 - zoxide (autojump, smart cd)
 - plocate (faster locate)
+- sd (sed alternative)
 
 - vipe (pipe in and out of $EDITOR) [github](https://github.com/juliangruber/vipe)
 - envsubst (replace the env variable)
