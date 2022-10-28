@@ -1,9 +1,8 @@
 # 安装 arch 过程记录
 
-|    date    |     tag      |
-|    ---     |     ---      |
+| date       | tag          |
+| ---------- | ------------ |
 | 2021-07-10 | arch install |
-
 
 ## 分区
 
@@ -180,4 +179,14 @@ sudo systemctl set-default multi-user.target
 
 # 桌面
 sudo systemctl set-default graphical.target
+```
+
+## 虚拟机安装增强工具
+
+```sh
+sudo pacman -S virtualbox-guest-utils
+sudo systemctl enable -now vboxservice.service
+
+# 手动执行或加入到自启动
+VBoxClient-all
 ```
