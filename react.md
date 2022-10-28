@@ -12,6 +12,15 @@
 
   > qsa-todo
 
-  [global dialog](https://github.com/sheason2019/global-dialog-demo)
+  - [global dialog](https://github.com/sheason2019/global-dialog-demo)
+  - [命令式 Dialog](https://cache.one/read/16377313)
 
-  [命令式 Dialog](https://cache.one/read/16377313)
+- `key`: 没有 ID 的内部列表 key 怎么设置
+
+  - 外部 id 作为前缀 + index
+  - 内容经 objectHash 处理后作为 key
+
+- 多个滚动条同步滚动
+
+  - [原生 JS 控制多个滚动条同步跟随滚动](https://juejin.cn/post/6844903539353845767)
+  - [原生 JS 解决多节点滚动同步联动](https://juejin.cn/post/6844904020281147405)
