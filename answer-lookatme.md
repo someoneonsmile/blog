@@ -31,9 +31,9 @@ ArrayList 是基于数组的, LinkedList 是基于链表的, 查找是 ArrayList
 
 ## 讲讲类的实例化顺序, 比如父类静态数据, 构造函数, 字段, 静态数据, 构造函数, 字段, 当 new 的时候, 他们的执行顺序
 
-加载父类到内存, 为父类静态字段开辟内存并进行默认初始化, 父类静态数据显示初始化, 父类静态初始化块
-加载子类到内存, 为子类静态字段开辟内存并进行默认初始化, 显示初始化子类静态字段, 子类静态初始化块
-父类变量初始化, 父类初始化块, 父类构造函数
+加载父类到内存, 为父类静态字段开辟内存并进行默认初始化, 父类静态数据显示初始化, 父类静态初始化块  
+加载子类到内存, 为子类静态字段开辟内存并进行默认初始化, 显示初始化子类静态字段, 子类静态初始化块  
+父类变量初始化, 父类初始化块, 父类构造函数  
 子类变量初始化, 子类初始化块, 子类构造函数
 
 ---
@@ -134,32 +134,32 @@ new 实例背后的指令:
 ### happens-before 原则
 
 1. 程序次序规则：一个线程内，按照代码顺序，书写在前面的操作先行发生于书写在后面的操作
-2. 锁定规则：一个unLock操作先行发生于后面对同一个锁额lock操作
-3. volatile变量规则：对一个变量的写操作先行发生于后面对这个变量的读操作
-4. 传递规则：如果操作A先行发生于操作B，而操作B又先行发生于操作C，则可以得出操作A先行发生于操作C
+2. 锁定规则：一个 unLock 操作先行发生于后面对同一个锁额 lock 操作
+3. volatile 变量规则：对一个变量的写操作先行发生于后面对这个变量的读操作
+4. 传递规则：如果操作 A 先行发生于操作 B，而操作 B 又先行发生于操作 C，则可以得出操作 A 先行发生于操作 C
 
 ### MESI 缓存一致性协议
 
 主内存, 工作内存:
 
-Java内存模型规定所有的变量都是存在主存当中（类似于前面说的物理内存），每个线程都有自己的工作内存（类似于前面的高速缓存）。
+Java 内存模型规定所有的变量都是存在主存当中（类似于前面说的物理内存），每个线程都有自己的工作内存（类似于前面的高速缓存）。
 
 线程对变量的所有操作都必须在工作内存中进行，而不能直接对主存进行操作。并且每个线程不能访问其他线程的工作内存。
 
 ### volatile 原理和实现机制
 
-下面这段话摘自《深入理解Java虚拟机》:
+下面这段话摘自《深入理解 Java 虚拟机》:
 
-观察加入volatile关键字和没有加入volatile关键字时所生成的汇编代码发现，加入volatile关键字时，会多出一个lock前缀指令”
+观察加入 volatile 关键字和没有加入 volatile 关键字时所生成的汇编代码发现，加入 volatile 关键字时，会多出一个 lock 前缀指令”
 
-ock前缀指令实际上相当于一个内存屏障（也成内存栅栏），内存屏障会提供3个功能：
+lock 前缀指令实际上相当于一个内存屏障（也成内存栅栏），内存屏障会提供 3 个功能：
 
-1. 它确保指令重排序时不会把其后面的指令排到内存屏障之前的位置，也不会把前面的指令排到内存屏障的后面.
-即在执行到内存屏障这句指令时，在它前面的操作已经全部完成
+1. 它确保指令重排序时不会把其后面的指令排到内存屏障之前的位置，也不会把前面的指令排到内存屏障的后面.  
+   即在执行到内存屏障这句指令时，在它前面的操作已经全部完成
 
 2. 它会强制将对缓存的修改操作立即写入主存.
 
-3. 如果是写操作，它会导致其他CPU中对应的缓存行无效.
+3. 如果是写操作，它会导致其他 CPU 中对应的缓存行无效.
 
 - [参见原文](https://www.cnblogs.com/dolphin0520/p/3920373.html)
 
@@ -179,19 +179,19 @@ remark 阶段耗时很长时可以在 remark 之前先做一次 ygc (-XX:+CMSSca
 如果 remark 阶段暂停时间长, 可以启用这个参数
 
 cms 老年代 GC 采用的是标记-清除算法, 为解决内存碎片问题, cms 提供以下参数:
--XX:+UseCMSCompactAtFullCollection  在 FGC 的时候对老年代内存压缩
--XX:CMSFullGCsBeforeCompaction=0  代表多少次 FGC 后对老年代做压缩操作
+-XX:+UseCMSCompactAtFullCollection 在 FGC 的时候对老年代内存压缩
+-XX:CMSFullGCsBeforeCompaction=0 代表多少次 FGC 后对老年代做压缩操作
 内存压缩触发时机: cms 并发 gc 失败(promotion failed, concurrent mode failure), 回退到 FGC.
 
 concurrent mode failure(并发失败):
-这个异常发生在cms正在回收的时候.
+这个异常发生在 cms 正在回收的时候.
 执行 CMS GC 的过程中, 同时业务线程也在运行, 当年轻带空间满了, 执行 ygc 时, 需要将存活的
-对象放入到老年代, 而此时老年代空间不足, 这时CMS还没有机会回收老年带产生的, 或者
-在做Minor GC的时候, 新生代救助空间放不下, 需要放入老年代, 而老年代也放不下而产生的
+对象放入到老年代, 而此时老年代空间不足, 这时 CMS 还没有机会回收老年带产生的, 或者
+在做 Minor GC 的时候, 新生代救助空间放不下, 需要放入老年代, 而老年代也放不下而产生的
 
 promotion failure(提升失败):
 这个异常发生在年轻代回收的时候.
-在进行Minor GC时, Survivor Space放不下, 对象只能放入老年代, 而此时老年代也放不下造成的
+在进行 Minor GC 时, Survivor Space 放不下, 对象只能放入老年代, 而此时老年代也放不下造成的
 多数是由于老年带有足够的空闲空间, 但是由于碎片较多, 新生代要转移到老年带的对象比较大
 找不到一段连续区域存放这个对象导致的
 
@@ -239,7 +239,7 @@ retained heap: 回收这个对象可以回收多少内存 (+ 因这个对象被�
 
 单一职责, 开放-关闭, 里氏替换, 依赖倒转, 接口隔离, 迪米特法则, 组合复用原则
 
-### 23种设计模式
+### 23 种设计模式
 
 创建型:
 简单工厂模式, 工厂模式, 抽象工厂模式, 单例模式, 生成器模式, 原型模式, 建造者模式
@@ -261,7 +261,7 @@ retained heap: 回收这个对象可以回收多少内存 (+ 因这个对象被�
 
 ### 锁有哪些
 
-ReentrantLock: 可重入锁, ReentrantWriteWriteLock: 可重入读写
+ReentrantLock: 可重入锁, ReentrantReadWriteLock: 可重入读写
 锁, StampedLock: 乐观读锁, 解决读多写少, 写饥饿问题
 
 ### 锁分类
@@ -285,14 +285,10 @@ ReentrantLock: 可重入锁, ReentrantWriteWriteLock: 可重入读写
 - @AutoConfigurationPackage
 - @Import(AutoConfigurationImportSelector.class)
 
-@AutoConfigurationPackage 是由 @Import(AutoConfigurationPackages.Registrar.class) 组成
-
-@Import 注解可以导入类到 Spring Ioc 中, 对 ImportSelector, ImportBeanDefinitionRegistrar
-
-有特殊处理, 对 ImportSelector 会导入它返回的所有类, ImportBeanDefinitionRegistrar 会
-
-将 **添加该注解的类所在的 package** 作为 **自动配置 package** 进行管理, 让包中的类及子包
-
+@AutoConfigurationPackage 是由 @Import(AutoConfigurationPackages.Registrar.class) 组成  
+@Import 注解可以导入类到 Spring Ioc 中, 对 ImportSelector, ImportBeanDefinitionRegistrar  
+有特殊处理, 对 ImportSelector 会导入它返回的所有类, ImportBeanDefinitionRegistrar 会  
+将 **添加该注解的类所在的 package** 作为 **自动配置 package** 进行管理, 让包中的类及子包  
 中的类能被自动扫描到 Spring Ioc 中.
 
 - [深入 spring boot 原理](https://www.cnblogs.com/hjwublog/p/10332042.html)
@@ -339,12 +335,6 @@ Class.forName 会执行初始化, ClassLoader.load 不会执行初始化
 
 ---
 
-## redis 持久化策略
-
-- [持久化策略浅析](https://segmentfault.com/a/1190000009537768)
-
----
-
 ## mysql mvcc, gap 锁, 解决快照读, 当前读
 
 - [mvcc 和 间隙读](https://blog.csdn.net/wxy941011/article/details/79604704)
@@ -363,35 +353,6 @@ TODO:
 
 ---
 
-## redis 热点 key, 怎么查找, 怎么处理
-
-TODO:
-
----
-
-## redis 缓存淘汰策略
-
-LRU(最久未使用), random, ttl(离过期时间最近), LFU(使用频率最少)
-
-LFU: 16 位时钟, 8 位频率(最多 255), redis 并没有使用线性上升的方式, 而是通过
-一个复杂的公式, 通过配置两个参数来调整数据的递增速度
-
-```c
-uint8_t LFULogIncr(uint8_t counter) {
-    if (counter == 255) return 255;
-    double r = (double)rand()/RAND_MAX;
-    double baseval = counter - LFU_INIT_VAL;
-    if (baseval < 0) baseval = 0;
-    double p = 1.0/(baseval*server.lfu_log_factor+1);
-    if (r < p) counter++;
-    return counter;
-}
-```
-
-- [redis 的缓存淘汰策略 LRU 和 LFU](https://www.jianshu.com/p/c8aeb3eee6bc)
-
----
-
 ## kafka 为什么快？
 
 - 磁盘顺序读写
@@ -403,13 +364,13 @@ uint8_t LFULogIncr(uint8_t counter) {
 
 ### kafka 分布式情况下，如何保证消息顺序？
 
-Kafka分布式的单位是 `partition`，同一个 `partition` 用一个 `write ahead log` 组织，所以可以保证FIFO的顺序。
+Kafka 分布式的单位是 `partition`，同一个 `partition` 用一个 `write ahead log` 组织，所以可以保证 FIFO 的顺序。
 
 不同 `partition` 之间不能保证顺序。
 
 但是绝大多数用户都可以通过 `message key` 来定义，因为同一个 `key` 的 `message` 可以保证只发送到同一个 `partition`
 
-比如说 `key` 是 `user id`，`ltable row id` 等等
+比如说 `key` 是 `user id`，`table row id` 等等
 
 所以同一个 `user` 或者同一个 `record` 的消息永远只会发送到同一个 `partition` 上，保证了同一个 `user` 或 `record` 的顺序
 
@@ -460,10 +421,51 @@ Kafka分布式的单位是 `partition`，同一个 `partition` 用一个 `write 
 
 ## epoll 更高效的原因
 
-1. select和poll的动作基本一致，只是poll采用链表来进行文件描述符的存储，而select采用fd标注位来存放，所以select会受到最大连接数的限制，而poll不会。
-2. select、poll、epoll虽然都会返回就绪的文件描述符数量。但是select和poll并不会明确指出是哪些文件描述符就绪，而epoll会。造成的区别就是，系统调用返回后，调用select和poll的程序需要遍历监听的整个文件描述符找到是谁处于就绪，而epoll则直接处理即可。
-3. select、poll都需要将有关文件描述符的数据结构拷贝进内核，最后再拷贝出来。而epoll创建的有关文件描述符的数据结构本身就存于内核态中，系统调用返回时利用mmap()文件映射内存加速与内核空间的消息传递：即epoll使用mmap减少复制开销。
-4. select、poll采用轮询的方式来检查文件描述符是否处于就绪态，而epoll采用回调机制。造成的结果就是，随着fd的增加，select和poll的效率会线性降低，而epoll不会受到太大影响，除非活跃的socket很多。
-5. epoll的边缘触发模式效率高，系统不会充斥大量不关心的就绪文件描述符
+1. select 和 poll 的动作基本一致，只是 poll 采用链表来进行文件描述符的存储，而 select 采用 fd 标注位来存放，所以 select 会受到最大连接数的限制，而 poll 不会。
+2. select、poll、epoll 虽然都会返回就绪的文件描述符数量。但是 select 和 poll 并不会明确指出是哪些文件描述符就绪，而 epoll 会。造成的区别就是，系统调用返回后，调用 select 和 poll 的程序需要遍历监听的整个文件描述符找到是谁处于就绪，而 epoll 则直接处理即可。
+3. select、poll 都需要将有关文件描述符的数据结构拷贝进内核，最后再拷贝出来。而 epoll 创建的有关文件描述符的数据结构本身就存于内核态中，系统调用返回时利用 mmap()文件映射内存加速与内核空间的消息传递：即 epoll 使用 mmap 减少复制开销。
+4. select、poll 采用轮询的方式来检查文件描述符是否处于就绪态，而 epoll 采用回调机制。造成的结果就是，随着 fd 的增加，select 和 poll 的效率会线性降低，而 epoll 不会受到太大影响，除非活跃的 socket 很多。
+5. epoll 的边缘触发模式效率高，系统不会充斥大量不关心的就绪文件描述符
 
 [彻底搞懂 epoll 高效的原因](https://www.jianshu.com/p/31cdfd6f5a48)
+
+---
+
+## redis 缓存淘汰策略
+
+LRU(最久未使用), random, ttl(离过期时间最近), LFU(使用频率最少)
+
+LFU: 16 位时钟, 8 位频率(最多 255), redis 并没有使用线性上升的方式, 而是通过
+一个复杂的公式, 通过配置两个参数来调整数据的递增速度
+
+```c
+uint8_t LFULogIncr(uint8_t counter) {
+    if (counter == 255) return 255;
+    double r = (double)rand()/RAND_MAX;
+    double baseval = counter - LFU_INIT_VAL;
+    if (baseval < 0) baseval = 0;
+    double p = 1.0/(baseval*server.lfu_log_factor+1);
+    if (r < p) counter++;
+    return counter;
+}
+```
+
+- [redis 的缓存淘汰策略 LRU 和 LFU](https://www.jianshu.com/p/c8aeb3eee6bc)
+
+---
+
+## redis 热点 key, 怎么查找, 怎么处理
+
+TODO:
+
+---
+
+## redis 持久化策略
+
+- [持久化策略浅析](https://segmentfault.com/a/1190000009537768)
+
+---
+
+## redis rehash
+
+[原文链接](https://zhuanlan.zhihu.com/p/358366217)
