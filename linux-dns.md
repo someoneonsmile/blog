@@ -19,6 +19,8 @@ listen_addresses = ['127.0.0.1:53000', '[::1]:53000']
 
 [arch wiki](https://wiki.archlinux.org/title/Dnscrypt-proxy)
 
+[dnscrypt.org](https://www.dnscrypt.org/)
+
 - 开启服务
 
 ```
@@ -58,3 +60,8 @@ sudo systemctl enable --now dnsmasq
 ```
 sudo ufw allow DNS
 ```
+
+## 配置 DNS Server
+
+配置到路由器 DHCP 中的 DNS Server，会对所有连接到路由器的主机
+自动配置 DNS Server
