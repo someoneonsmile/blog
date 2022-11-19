@@ -49,6 +49,14 @@
   在命令行模拟键盘按键(快捷键), 在不方便调用命令  
   或没有 shell 命令的时候, 可以方便调用对应功能
 
+- asciinema
+
+  终端录制
+
+- svg-term-cli
+
+  终端录制转 SVG
+
 ## shell
 
 - fish
