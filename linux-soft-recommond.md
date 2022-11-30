@@ -57,6 +57,12 @@
 
   终端录制转 SVG
 
+- ipfs
+
+  分布式文件系统
+
+  `pacman -S kubo`
+
 ## shell
 
 - fish
