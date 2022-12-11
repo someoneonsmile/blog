@@ -1,8 +1,5 @@
 # npm 包推荐
 
-- `class-variance-authority`: `cva`
-  结构化不同 `classNames` 变体配置, 搭配 `tailwindcss` 可以应用在更加复杂的场景
-
 - `tailwindcss`
   原子化的 `css` 框架
 
@@ -36,3 +33,9 @@
 
 - `apca-w3`
   无障碍对比度库
+
+- `class-variance-authority`: `cva`
+  结构化不同 `classNames` 变体配置, 搭配 `tailwindcss` 可以应用在更加复杂的场景
+
+- `classnames`
+  简化动态类名拼接
