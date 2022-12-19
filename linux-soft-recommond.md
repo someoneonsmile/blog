@@ -20,6 +20,7 @@
 - tig (git)
 - httpie
 - lookatme (markdown slide)
+- slides (markdown slide)
 - fd
 - tldr
 - vifm (file manager)
