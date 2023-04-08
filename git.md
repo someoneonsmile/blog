@@ -76,3 +76,42 @@ git filter-branch --commit-filter 'git commit-tree -S "$@";' <COMMIT>..HEAD
 ```
 
 > from [stackoverflow](https://superuser.com/questions/397149/can-you-gpg-sign-old-commits)
+
+## git rev-parse
+
+`git rev-parse --help`
+
+- 获取 SHA1 (OID)
+
+## git 获取当前分支名
+
+- `git branch --show-current`
+- `git name-rev --name-only HEAD`
+- `git symbolic-ref --short HEAD`
+- `git rev-parse --abbrev-ref HEAD`
+
+> from [stackoverflow](https://stackoverflow.com/questions/6245570/how-do-i-get-the-current-branch-name-in-git)
+
+## 远程当前分支的名称
+
+`git name-rev --name-only @{u}`
+
+## reset 到远程分支节点
+
+`git reset @{u}`
+
+## push 到远程同名分支
+
+- `git push origin HEAD`
+
+- `git config push.default current`
+
+> from [stackoverflow](https://stackoverflow.com/questions/948354/default-behavior-of-git-push-without-a-branch-specified)
+> from [stackoverflow](https://stackoverflow.com/questions/14031970/git-push-current-branch-shortcut/20922141#20922141)
+
+## revision range
+
+- `^<rev>`: exclude commit that are reachable from `<rev>`
+- `<rev1>..<rev2>`: `^<rev1> <rev2>`, reachable from `<rev2>` but exclude those that reachable from `<rev1>`
+- `<rev1>...<rev2>`: reachable from either `<rev1>` or `<rev2>` but exclude those that reachable from both
+- `<rev>^^-<n>`: `<rev>^<n>...<rev>`
