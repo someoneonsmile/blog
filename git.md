@@ -115,3 +115,10 @@ git filter-branch --commit-filter 'git commit-tree -S "$@";' <COMMIT>..HEAD
 - `<rev1>..<rev2>`: `^<rev1> <rev2>`, reachable from `<rev2>` but exclude those that reachable from `<rev1>`
 - `<rev1>...<rev2>`: reachable from either `<rev1>` or `<rev2>` but exclude those that reachable from both
 - `<rev>^^-<n>`: `<rev>^<n>...<rev>`
+
+## partial clone
+
+- `git clone --filter=blob:none <url>`: blobless
+- `git clone --filter=tree:0 <url>`: treeless
+
+> from [github blog](https://github.blog/2020-12-21-get-up-to-speed-with-partial-clone-and-shallow-clone/)
