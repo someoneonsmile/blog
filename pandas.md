@@ -32,6 +32,27 @@
 
 ## 所有列做处理
 
+- `dataframe.columns`
+
 ```python
 df.columns = df.columns.str.replace(r'\s+', '_', regex=True)
 ```
+
+- `dataframe.astype`
+
+- `dataframe.apply`
+
+```python
+# pd.to_numberic 只能作用到单列
+
+# 利用 apply 将它作用到整个 dataframe, 遇到错误时忽略, 不予转换该列
+df = df.apply(pd.to_numberic, errors='ignore')
+
+# 遇到错误时转换成 nan
+df = df.apply(pd.to_numberic, errors='coerce')
+
+# 遇到错误时报错
+df = df.apply(pd.to_numberic, errors='raise')
+```
+
+> [from](https://blog.csdn.net/Python_Ai_Road/article/details/81158376)
