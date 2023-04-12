@@ -29,3 +29,9 @@
   ```
 
 > [from](https://blog.csdn.net/qq_34490873/article/details/81205523)
+
+## 所有列做处理
+
+```python
+df.columns = df.columns.str.replace(r'\s+', '_', regex=True)
+```
