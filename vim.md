@@ -380,8 +380,8 @@ nnoremap <expr>   <Plug>Yssurround '^'.v:count1.<SID>opfunc('setup').'g_'
 - `=`: `equalprg`, `indentexpr`
 - `gq` `gw`: `formatexpr`, `formatprg`
 
-- `grepprg`: `make`
-- `makeprg`: `grep`
+- `grepprg`: `grep`
+- `makeprg`: `make`
 
 ## 模拟输入
 
