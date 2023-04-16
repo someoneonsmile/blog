@@ -132,13 +132,12 @@
 > lua api 也提供了 `^` `+` `-` 符号操作
 > ex: `vim.opt.clipboard = vim.opt.clipboard ^ 'unnamedplus'`
 
-## nvim-0.7
-
-### `:lua =`
+## `:lua =`
 
 > `:lua =`: since nvim-0.7, pretty_print the lua express
+> shorter: `:=expr`
 
-### `set laststatus=3`: 全局状态栏
+## `set laststatus=3`: 全局状态栏
 
 > 只展示最后一个窗口的状态栏
 
