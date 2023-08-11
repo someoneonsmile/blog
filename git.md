@@ -122,3 +122,13 @@ git filter-branch --commit-filter 'git commit-tree -S "$@";' <COMMIT>..HEAD
 - `git clone --filter=tree:0 <url>`: treeless
 
 > from [github blog](https://github.blog/2020-12-21-get-up-to-speed-with-partial-clone-and-shallow-clone/)
+
+## 仓库镜像
+
+- 使用 `ssh` 替换 `https://`
+
+```sh
+git config --global url."git@github.com:".insteadOf "https://github.com/"
+```
+
+> from [github gist](https://gist.github.com/Kovrinic/ea5e7123ab5c97d451804ea222ecd78a)
