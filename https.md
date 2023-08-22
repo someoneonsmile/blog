@@ -25,4 +25,8 @@ sequenceDiagram
 
 ## 参考
 
-[原文](https://web.archive.org/web/20221117062205/https://mdnice.com/writing/138185b5b5a1428bb59022a33082d68f)
+- [原文](https://web.archive.org/web/20221117062205/https://mdnice.com/writing/138185b5b5a1428bb59022a33082d68f)
+
+## 优秀文章
+
+- [椭圆曲线加密](https://fangpenlin.com/posts/2019/10/07/elliptic-curve-cryptography-explained/)
