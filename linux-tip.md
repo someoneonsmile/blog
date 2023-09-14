@@ -61,7 +61,7 @@
 
 - shell 命令结果赋值给变量
 
-  ```shell
+  ```sh
   var=`command`
   var=$(command)
   ```
@@ -70,7 +70,7 @@
 
 - install 复制文件
 
-  ```shell
+  ```sh
   # 复制文件到指定目录(目录不存在时创建), 且设置权限
   install -Dm644 source_file dest_dir/dest_file
   ```
@@ -83,7 +83,7 @@
 
 - 查看进程的启动文件
 
-  ```shell
+  ```sh
   # 查询进程 pid
   ps -ef | grep [进程名]
 
@@ -95,7 +95,7 @@
 
 - 替换环境变量
 
-  ```shell
+  ```sh
   envsubst
 
   # Replace environment variables in stdin and output to stdout:
@@ -137,7 +137,7 @@
 
 - bash 随机数
 
-  ```
+  ```sh
   # RANDOM shell 变量
   echo $RANDOM
   # $$ 变量返回当前进程号
@@ -152,7 +152,7 @@
 
 - print rest fields
 
-  ```
+  ```sh
   # in awk
   # Set the field(s) you want to skip to blank:
   awk '$1=""; print $0;' < file_name
