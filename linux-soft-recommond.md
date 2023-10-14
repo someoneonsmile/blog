@@ -64,6 +64,10 @@
 
   `pacman -S kubo`
 
+- bottom (btm)
+
+  top alternative write with rust
+
 ## shell
 
 - fish
