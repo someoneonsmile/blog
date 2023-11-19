@@ -168,7 +168,7 @@ sudo pacman -S rofi
 ## 取消笔记本合盖挂起
 
 ```sh
-echo 'HandlerLidSwitch=ignore' | sudo tee -a /etc/systemd/logind.conf
+echo 'HandleLidSwitch=ignore' | sudo tee -a /etc/systemd/logind.conf
 ```
 
 ## 开机桌面环境 CLI 切换
