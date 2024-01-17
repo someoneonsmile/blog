@@ -220,3 +220,11 @@
   # 通过 cat 多个及输入重定向
   echo 'a' | cat - <(echo 'b')
   ```
+
+- fold, 行宽度太长时换行
+
+  `fold -w 80`
+
+- paste, 按行拼接多个文件
+
+  `paste $file1 $file2`
