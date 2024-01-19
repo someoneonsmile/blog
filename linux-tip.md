@@ -237,4 +237,7 @@
 
   `tail -n +6`: 输出除前 5 行的所有行
 
+- man file-hierarchy
+
+  查看文件系统层次结构
 
