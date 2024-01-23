@@ -68,6 +68,22 @@
 
   top alternative write with rust
 
+- ast-grep (sg)
+
+  结构化搜索和替换
+
+  > ast-grep(sg) is a CLI tool for code structural search, lint, and rewriting.
+
+  > [https://github.com/ast-grep/ast-grep](https://github.com/ast-grep/ast-grep)
+
+- q
+
+  赋予终端输出, sql 强大的查询能力, csv cli 处理工具
+
+  > q - Run SQL directly on delimited files and multi-file sqlite databases
+
+  > [https://github.com/harelba/q](https://github.com/harelba/q)
+
 ## shell
 
 - fish
