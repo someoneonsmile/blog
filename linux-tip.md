@@ -241,3 +241,19 @@
 
   查看文件系统层次结构
 
+- ssh 代理
+
+  `~/.ssh/config`
+
+  ```
+  HOST *
+      ProxyCommand nc -X 5 -x 127.0.0.1:1080 %h %p
+  ```
+
+  通过 openbsd-netcat(nc) socks5 代理
+
+  > [原文](https://kuokuo.io/2019/07/01/ssh-over-http-or-socks/)
+
+- q 一个使你的命令行输出拥有 sql 强大的动态查询能力
+
+  > [https://github.com/harelba/q](https://github.com/harelba/q)
