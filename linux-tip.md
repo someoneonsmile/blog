@@ -257,3 +257,8 @@
 - q 一个使你的命令行输出拥有 sql 强大的动态查询能力
 
   > [https://github.com/harelba/q](https://github.com/harelba/q)
+
+- awk 按列去重
+
+  - `awk '!x[$2]++`: 按第二列去重保留第一个
+  - `awk '!int((x[$2]++)/2)`: 按第二列去重, 保留两个
