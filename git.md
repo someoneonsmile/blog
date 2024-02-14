@@ -132,3 +132,11 @@ git config --global url."git@github.com:".insteadOf "https://github.com/"
 ```
 
 > from [github gist](https://gist.github.com/Kovrinic/ea5e7123ab5c97d451804ea222ecd78a)
+
+## git 还原所有空白修改
+
+```sh
+git diff -w --ignore-blank-lines > temp.patch
+git restore :/
+git apply temp.patch
+```
