@@ -140,3 +140,9 @@ git diff -w --ignore-blank-lines > temp.patch
 git restore :/
 git apply temp.patch
 ```
+
+## git 列出所有修改且存在的文件
+
+```sh
+git status --short | awk `$1=="M"||$1=="A" {print $2} $1=="R" {print $4}`
+```
