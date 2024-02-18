@@ -141,6 +141,8 @@ git restore :/
 git apply temp.patch
 ```
 
+> Warning: 做好备份, 谨慎使用, 有可能使更改丢失
+
 ## git 列出所有修改且存在的文件
 
 ```sh
