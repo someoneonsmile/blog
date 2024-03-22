@@ -84,6 +84,14 @@
 
   > [https://github.com/harelba/q](https://github.com/harelba/q)
 
+- jnv
+
+  interactive JSON filter using jq (JSON 交互式 filter)
+
+  `paru -S jnv`
+
+  > [https://github.com/ynqa/jnv]
+
 ## shell
 
 - fish
