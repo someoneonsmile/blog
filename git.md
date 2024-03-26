@@ -148,3 +148,37 @@ git apply temp.patch
 ```sh
 git status --short | awk `$1=="M"||$1=="A" {print $2} $1=="R" {print $4}`
 ```
+
+## git rebase --update-refs
+
+--udpate-refs 选项可以确保使用 git rebase 后, 相关的引用也会被更新
+
+```mermaid
+  gitGraph
+    checkout main
+    commit id: "base"
+
+    branch feature1
+    checkout feature1
+    commit id: "Alpha"
+
+
+    branch feature2
+    checkout feature2
+    commit id: "Beta"
+
+    branch feature3
+    checkout feature3
+    commit id: "Gamma"
+```
+
+```
+git switch feature3
+git rebase main --update-refs
+```
+
+it will update all refs for branch feature1 feature2 feature3
+
+## git worktree
+
+可以同时检出多个分支，每个分支有自己的目录
