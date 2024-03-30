@@ -182,3 +182,80 @@ it will update all refs for branch feature1 feature2 feature3
 ## git worktree
 
 可以同时检出多个分支，每个分支有自己的目录
+
+## git log -L 查看指定范围内的提交历史中文件的变更情况
+
+```
+# git log -L <start>,<end>:<file>
+# <start> and <end> 可用形式
+# number: 表示文件中的绝对行号
+# /regex/: 从上一个 -L 结束开始搜索
+# ^/regex/: 从文件开头开始搜索
+# +offset or -offset: 只对 <end> 有效
+git log -L 10,20:example.txt
+
+# git log -L :<funcname>:<file>
+# `:<funcname>`: 匹配函数开始和结束的表达式, 同样从上一个 -L 结束开始搜索
+# `^:<funcname>`: 匹配函数开始和结束的表达式, 从文件头开始搜索
+git log -L :date_format:util.rs
+```
+
+## git diff
+
+### git diff --word-diff
+
+按单词 diff 显示差别, 对于 tailwindcss 用户特别有用
+
+### git diff -S<string>
+
+精确搜索 `<string>` 次数变更的提交
+
+### git diff -S<regex> --pickaxe-regex
+
+匹配搜索 `<regex>` 次数变更的提交
+
+### git diff -G<regex>
+
+匹配搜索添加/删除的行包含 `<regex>` 的提交, 注意与 `git diff -S<regex>> --pickaxe-regex` 的区别
+
+### git diff --diff-filter=[(A|C|D|M|R|T|U|X|B)...[*]]
+
+大写包含(include), 小写不包含(exclude)
+
+### git diff 忽略空白
+
+- `--ignore-cr-at-eol`
+- `--ignore-space-at-eol`
+- `-b, --ignore-space-change`
+- `-w, --ignore-all-space`
+- `-I<regex>, --ignore-matching-lines=<regex>`
+  Ignore changes whose all lines match <regex>.
+
+### git diff -W
+
+> Show whole function as context lines for each change.
+
+change 的上下文中显示整个函数
+
+## git config --global rerere.enable true
+
+> REuse REcorded REsolution
+
+`rebase` 过程中的相同冲突只解决一次
+
+## git maintenance start
+
+自动维护大型仓库, 使在大型仓库上的操作变快
+
+## scalar: git
+
+- prefetching
+- commit-graph
+- filesystem monitor
+- partial cloning
+- sparse checkout
+
+## 参考
+
+- [So You Think You Know Git? Part 1](https://www.youtube.com/watch?v=aolI_Rz0ZqY)
+- [So You Think You Know Git? Part 2](https://www.youtube.com/watch?v=Md44rcw13k4)
