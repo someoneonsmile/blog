@@ -21,6 +21,7 @@
 - httpie
 - lookatme (markdown slide)
 - slides (markdown slide)
+- presenterm (markdown slide)
 - fd
 - tldr
 - vifm (file manager)
