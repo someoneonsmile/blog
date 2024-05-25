@@ -412,3 +412,13 @@ Example: `:wincmd j`
 local a = vim.defaulttable()
 a.b.c = 1
 ```
+
+## vim.ui.open({path})
+
+> opens path with system default handler
+
+使用系统默认处理器打开路径
+
+## gx
+
+使用 `vim.ui.open` 打开光标下的路径
