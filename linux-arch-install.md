@@ -108,6 +108,55 @@ grub-install --targe=x86_64-efi --bootloader-id=grub_uefi --recheck
 grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
+## 配置开机启动动画
+
+### 安装 `plymouth`
+
+```sh
+pacman -S plymouth
+```
+
+### plymouth 开机启动
+
+```sh
+systemctl enable plymouth
+```
+
+### 配置内核参数及 grub
+
+- 添加 init 启动 hook
+
+`/etc/mkinitcpio.conf` `HOOKS` 参数列表最后添加 `plymouth`
+
+```sh
+mkinitcpio -p linux
+```
+
+- 配置内核参数显示启动动画
+
+编辑 `/etc/default/grub` 添加如下参数, 让启动过程安静, 并显示启动动画
+
+```
+GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet splash"
+```
+
+编译 grub 配置
+
+```sh
+grub-mkconfig -o /boot/grub/grub.cfg
+```
+
+### 配置 plymouth
+
+```sh
+# 列出主题列表
+plymouth-set-default-theme -l
+# 设置主题为 <themename>
+plymouth-set-default-theme -R <themename>
+```
+
+或修改 `/etc/plymouth/plymouthd.conf`
+
 ## 重启并进入系统
 
 ### 更换国内镜像
