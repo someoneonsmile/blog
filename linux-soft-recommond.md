@@ -11,6 +11,7 @@
 - fzf
 - ripgrep (rg)
 - jq (json)
+- jaq (json, jq clone, write with rust)
 - bat (cat alternative)
 - axel (downloader)
 - glow (markdown preview)
