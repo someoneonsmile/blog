@@ -245,6 +245,22 @@ patch:
     - schema: wubi_pinyin
 ```
 
+## 优化
+
+### 系统日志大小优化
+
+修改 `/etc/systemd/journald.conf` 文件, 添加或修改以下行:
+
+```
+SystemMaxUse=100M
+```
+
+这会将日志大小限制在100MB。修改后需要重启 systemd-journald 服务:
+
+```
+sudo systemctl restart systemd-journald
+```
+
 ## 取消笔记本合盖挂起
 
 ```sh
