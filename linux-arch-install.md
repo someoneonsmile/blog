@@ -214,6 +214,37 @@ sudo pacman -S polybar
 sudo pacman -S rofi
 ```
 
+## 输入法
+
+### 软件安装
+
+- 输入法框架及引擎
+
+```sh
+sudo pacman -S fcitx5-im fcitx5-rime rime-wubi
+```
+
+- 输入法皮肤
+
+```sh
+sudo pacman -S fcitx5-nord fcitx5-breeze
+paru -S fcitx5-skin-fluentdark-git
+```
+
+### rime 配置
+
+配置文件目录位于 `~/.local/share/fcitx5/rime`
+
+`vim ~/.local/share/fcitx5/rime/default.custom.yaml`
+
+添加如下配置:
+
+```yaml
+patch:
+  schema_list:
+    - schema: wubi_pinyin
+```
+
 ## 取消笔记本合盖挂起
 
 ```sh
