@@ -255,6 +255,25 @@ change 的上下文中显示整个函数
 - partial cloning
 - sparse checkout
 
+## 新建分支时取消自动设置 upstream
+
+`branch.autoSetupMerge` 默认为 `true`, 当新建分支时若起始分支为远程分支时, 会自动设置远程分支为 track
+
+修改为 `simple`, 仅当起始分支为远程分支且与本地分支同名时才设置
+
+```sh
+git config --global branch.autoSetupMerge simple`
+```
+
+或在配置文件中添加如下内容
+
+```
+[branch]
+    ; default option is `true`, will auto set track branch
+    ; when starting point is a remote-tracking branch
+    autoSetupMerge = simple
+```
+
 ## 参考
 
 - [So You Think You Know Git? Part 1](https://www.youtube.com/watch?v=aolI_Rz0ZqY)
