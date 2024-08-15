@@ -274,6 +274,10 @@ git config --global branch.autoSetupMerge simple`
     autoSetupMerge = simple
 ```
 
+## find-merge vs merge-base
+
+find-merge 是查找两节点之后的合并节点，merge-base 是查找两节点前的最近公共祖先节点
+
 ## 参考
 
 - [So You Think You Know Git? Part 1](https://www.youtube.com/watch?v=aolI_Rz0ZqY)
