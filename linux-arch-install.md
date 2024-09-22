@@ -108,6 +108,31 @@ grub-install --targe=x86_64-efi --bootloader-id=grub_uefi --recheck
 grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
+## 添加启动器桌面
+
+```
+sudo pacman -S lightdm lightdm-gtk-greeter
+# 开机自动启动
+sudo systemctl enable lightdm
+```
+
+## 设置 DPI
+
+```
+echo 'Xft.dpi: 125' >> ~/.Xresources
+```
+
+## 修改 xinitc, 添加 fcitx5 输入法相关环境变量
+
+`location`: `/etc/X11/xinit/xinitrc`
+
+```sh
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+export SDL_IM_MODULE=fcitx
+```
+
 ## 配置开机启动动画
 
 ### 安装 `plymouth`
