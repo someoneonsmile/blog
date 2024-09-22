@@ -108,6 +108,13 @@ grub-install --targe=x86_64-efi --bootloader-id=grub_uefi --recheck
 grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
+> [双系统引导](https://blog.stelpolvo.com/20210804/load-Arch-and-Windows-system-by-grub/)
+
+```sh
+# 系统安装在两个硬盘的情况下, 手动把另一个硬盘挂载到 /boot 目录下
+sudo mount /dev/nvme0n1p1 /boot/windows/
+```
+
 ## 添加启动器桌面
 
 ```
