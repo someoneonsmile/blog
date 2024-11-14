@@ -294,3 +294,12 @@
   ```
   sed '1a\hello;2d;3c\third'
   ```
+
+- 其它命令的输出作为文件传递给其它命令
+
+  - bash
+    `<(cmd)`
+  - fish
+    `(cmd | psub)`
+    或者添加后缀, 作为 `C` 文件
+    `(cmd | psub -s .C)`
