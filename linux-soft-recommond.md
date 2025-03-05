@@ -94,6 +94,12 @@
 
   > [https://github.com/ynqa/jnv]
 
+- lnav
+
+  The Logfile Navigator 日志导航器
+
+  > [https://github.com/tstack/lnav]
+
 ## shell
 
 - fish
