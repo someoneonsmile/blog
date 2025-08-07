@@ -33,6 +33,7 @@
 - zoxide (autojump, smart cd)
 - plocate (faster locate)
 - sd (sed alternative)
+- fclones (fastest duplicate file cli)
 
 - vipe (pipe in and out of $EDITOR) [github](https://github.com/juliangruber/vipe)
 - envsubst (replace the env variable)
