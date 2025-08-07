@@ -26,3 +26,9 @@ const [ref, { width }] = useMeasure();
 
 - [参考](https://blog.csdn.net/qq_43942185/article/details/125291441)
 - [参考 2](https://sekin.gitbook.io/css-trick/guo-du-dong-hua/gao-du-zi-shi-ying-de-guo-du)
+
+## 粘性定位
+
+粘性定位跟固定定位、绝对定位一样，都是相对于最近的 relative 父节点
+
+- [示例](webauthn.guide)
