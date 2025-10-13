@@ -303,3 +303,18 @@
     `(cmd | psub)`
     或者添加后缀, 作为 `C` 文件
     `(cmd | psub -s .C)`
+
+- 解决 telegram 之类 qt 或者 gtk 应用没有输入法问题
+
+  原因是因为环境变量中没有配置输入法环境变量, 或者 GUI 程序读取不到
+
+  解决方法是使用 systemd 的环境变量配置
+
+  `~/.config/environment.d/fcitx.conf` 文件中写入
+
+  ```
+  GTK_IM_MODULE=fcitx
+  QT_IM_MODULE=fcitx
+  XMODIFIERS=@im=fcitx
+  SDL_IM_MODULE=fcitx
+  ```
