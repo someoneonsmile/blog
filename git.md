@@ -278,6 +278,16 @@ git config --global branch.autoSetupMerge simple`
 
 find-merge 是查找两节点之后的合并节点，merge-base 是查找两节点前的最近公共祖先节点
 
+```
+[alias]
+find-merge = "!sh -c 'commit=$0 && branch=${1:-HEAD} && (git rev-list $commit..$branch --ancestry-path | cat -n; git rev-list $commit..$branch --first-parent | cat -n) | sort -k2 -s | uniq -f1 -d | sort -n | tail -1 | cut -f2'"
+show-merge = "!sh -c 'merge=$(git find-merge $0 $1) && [ -n \"$merge\" ] && git show $merge'"
+```
+
+## --ancestry-path
+
+## --first-parent
+
 ## 参考
 
 - [So You Think You Know Git? Part 1](https://www.youtube.com/watch?v=aolI_Rz0ZqY)
