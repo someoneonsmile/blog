@@ -1,6 +1,6 @@
-# linux 安装 kvm
+# Linux 安装 KVM
 
-## 检查 kVM 支持
+## 检查 KVM 支持
 
 ### 检查硬件支持
 
@@ -80,7 +80,7 @@ newgrp libvirt
 
 ## 💡 小贴士
 
-如果你使用 libvirt / KVM NAT 网络，`UFW` 可能会阻止虚拟机访问外网
+如果你使用 `libvirt / KVM` `NAT` 网络，`UFW` 可能会阻止虚拟机访问外网
 若遇到这种情况，可以运行：
 
 ```sh
@@ -95,4 +95,3 @@ sudo ufw route allow
 ```
 
 规则放行 NAT 转发
-
