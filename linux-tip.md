@@ -39,7 +39,6 @@
   `seq` 组合 `xargs` 遍历指定次数, `seq 1000 | xargs -i dd if=/dev/zero of={} bs=1k count=256`
 
 - 终端关闭声音
-
   - /etc/inputrc
 
     ```sh
@@ -76,7 +75,6 @@
   ```
 
 - 减少可执行文件体积
-
   - `strip` 可以剥掉文件的符号信息调试信息减少文件体积
 
   - `upx` 可进一步压缩可执行文件大小
@@ -126,7 +124,7 @@
 
   > moreutils
 
-- 生成 temp 文件并用 $EDITOR 编辑
+- 生成 `temp` 文件并用 `$EDITOR` 编辑
 
   ```sh
   # 生成临时文件
@@ -173,7 +171,7 @@
 
 - `locate`
 
-  fast find file, recommand `plocate` (faster locate)
+  fast find file, recommend `plocate` (faster locate)
 
 - `split` 及 `cat`
 
@@ -187,8 +185,7 @@
 
 - 模拟按键调用功能
 
-  通过 `xdotool` cli 程序可以方便的模拟按键或鼠标行为  
-  调用按键对应的功能
+  通过 `xdotool` cli 程序可以方便的模拟按键或鼠标行为, 调用按键对应的功能
 
 - convert 切图
 
@@ -200,16 +197,18 @@
 
 - `sudo`
 
-  `sudo -E` 参数的作用是保留用户的环境变量来执行命令。
-  `sudo` 默认会清除大部分环境变量,以提供较为干净的执行环境。
-  但有时我们希望保留用户环境,这时可以用 `-E` 参数。
+  `sudo` 默认会清除大部分环境变量, 以提供较为干净的执行环境
 
-  另一个常用参数是 `-i`, 表示登录式的 `sudo`, 会模拟登录环境。
+  但有时我们希望保留用户环境, 这时可以用 `-E` 参数
+
+  `sudo -E` 参数的作用是保留用户的环境变量来执行命令
+
+  另一个常用参数是 `-i`, 表示登录式的 `sudo`, 会模拟登录环境
 
   两者区别在于:
 
-  `-E` 只保留环境变量,不加载其他登录配置过程。
-  `-i` 更完整的模拟交互式登录。
+  `-E` 只保留环境变量, 不加载其他登录配置过程
+  `-i` 更完整的模拟交互式登录
 
 - append to pip, 追加内容到管道
 
@@ -259,18 +258,15 @@
   > [https://github.com/harelba/q](https://github.com/harelba/q)
 
 - awk 按列去重
-
   - `awk '!x[$2]++'`: 按第二列去重保留第一个
   - `awk '!int((x[$2]++)/2)'`: 按第二列去重, 保留两个
 
 - grep / rg 精确匹配
-
   - `grep -F 'foo'`: 精确匹配 foo
   - `grep -F -e '-F'`: 使用 `-e` 避免将 `-F` 解析为选项
   - `grep -F -- -F`: 使用 `--` 避免将 `-F` 解析为选项
 
 - grep / rg 输出匹配文件名及不匹配文件名
-
   - `grep -l '^\s'` | `rg -l '^\s'`: 输出包含匹配该模式的文件名
   - `grep -l -v '^\s'` | `rg -l -v '^\s'`: 输出包含不匹配该模式的行的文件名
   - `grep -L '^\s'` | `rg --files-without-match '^\s'`: 输出所有行都不匹配该模式的文件名
@@ -281,7 +277,7 @@
   cat -s
   ```
 
-- sed 插入多行及行首空格及多个命令
+- `sed` 插入多行及行首空格及多个命令
 
   多个命令使用分号或回车分割, 简单命令用 `;`, 复杂用回车
 
@@ -296,7 +292,6 @@
   ```
 
 - 其它命令的输出作为文件传递给其它命令, 进程替换(将命令的输出转换为一个匿名管道/文件, 或命名管道, 或临时文件)
-
   - bash
     `<(cmd)`
   - fish
@@ -304,11 +299,11 @@
     或者添加后缀, 作为 `C` 文件
     `(cmd | psub -s .C)`
 
-- 解决 telegram 之类 qt 或者 gtk 应用没有输入法问题
+- 解决 `telegram` 之类 `qt` 或者 `gtk` 应用没有输入法问题
 
-  原因是因为环境变量中没有配置输入法环境变量, 或者 GUI 程序读取不到
+  原因是因为环境变量中没有配置输入法环境变量, 或者 `GUI` 程序读取不到
 
-  解决方法是使用 systemd 的环境变量配置
+  解决方法是使用 `systemd` 的环境变量配置
 
   `~/.config/environment.d/fcitx.conf` 文件中写入
 
@@ -318,3 +313,18 @@
   XMODIFIERS=@im=fcitx
   SDL_IM_MODULE=fcitx
   ```
+
+- systemd service
+  - 修改 service 配置文件后需要运行 `systemctl daemon-reload` 以使重新加载文件
+
+  - 不动原文件的情况下修改 service 的优雅方式是使用 `drop-in` 文件 (即 `.d` 文件夹下的文件)
+
+  - 对于 `After=` 这种列表型的配置, `systemd` 的逻辑是归并 (Merging). 你只需要在自定义文件中写入新的服务, 它们就会被追加到现有的列表之后
+
+  - 如果要覆盖而不是追加, 虽然在 After 中很少见, 但如果你想彻底清除之前的设置重新写, 你需要先写一个空的赋值, 再写新的
+
+    ```
+    [Unit]
+    After=
+    After=only-this-service.service
+    ```
